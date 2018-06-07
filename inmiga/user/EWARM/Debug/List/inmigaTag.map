@@ -1,0 +1,518 @@
+###############################################################################
+#
+# IAR ELF Linker V8.20.2.14835/W32 for ARM                06/Jun/2018  10:34:00
+# Copyright 2007-2017 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Exe\inmigaTag.out
+#    Map file     =  
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\List\inmigaTag.map
+#    Command line =  
+#        -f C:\Users\lenovo\AppData\Local\Temp\EW23C3.tmp
+#        (D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\clk.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\ct.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\ddl.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\exint.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\gpio.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\interrupts_hc32l15.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\lpm.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\main.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\paperDrv.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\sci.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\startup_hc32l15.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\system_hc32l15.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\timeOut.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\tokenBsp.o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj\tokenCon.o -o
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Exe\inmigaTag.out --map
+#        D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\List\inmigaTag.map
+#        --config D:\flyWork\token4SZT\inmiga\user\EWARM\HC32L15.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0001ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block HEAP with size = 0M, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x200017ff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0xc0
+  .intvec            ro code  0x00000000    0xc0  startup_hc32l15.o [1]
+                            - 0x000000c0    0xc0
+
+"P1":                                     0x448e
+  .text              ro code  0x000000c0  0x10b0  paperDrv.o [1]
+  .text              ro code  0x00001170   0x234  gpio.o [1]
+  .text              ro code  0x000013a4    0x48  ddl.o [1]
+  .text              ro code  0x000013ec   0x79c  clk.o [1]
+  .text              ro code  0x00001b88    0xae  I32DivModFast.o [4]
+  .text              ro code  0x00001c36     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00001c38    0x24  ABIassert.o [5]
+  .text              ro code  0x00001c5c    0x3c  system_hc32l15.o [1]
+  .text              ro code  0x00001c98     0x2  IntDivZer.o [4]
+  .text              ro code  0x00001c9a     0xa  abort.o [3]
+  .text              ro code  0x00001ca4    0x14  exit.o [5]
+  .text              ro code  0x00001cb8   0x910  sci.o [1]
+  .text              ro code  0x000025c8   0x78c  ct.o [1]
+  .text              ro code  0x00002d54   0x52c  tokenCon.o [1]
+  .text              ro code  0x00003280    0xc6  timeOut.o [1]
+  .text              ro code  0x00003346     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00003348   0x444  interrupts_hc32l15.o [1]
+  .text              ro code  0x0000378c   0x2bc  exint.o [1]
+  .text              ro code  0x00003a48   0x238  main.o [1]
+  .text              ro code  0x00003c80    0xac  tokenBsp.o [1]
+  .text              ro code  0x00003d2c   0x180  lpm.o [1]
+  .rodata            const    0x00003eac    0xd0  paperDrv.o [1]
+  .text              ro code  0x00003f7c    0x3c  zero_init3.o [4]
+  .text              ro code  0x00003fb8    0x3c  packbits_init_single.o [4]
+  .rodata            const    0x00003ff4    0x30  clk.o [1]
+  .rodata            const    0x00004024    0x30  exint.o [1]
+  .rodata            const    0x00004054    0x30  lpm.o [1]
+  .rodata            const    0x00004084    0x30  sci.o [1]
+  .rodata            const    0x000040b4    0x2c  ct.o [1]
+  .rodata            const    0x000040e0    0x2c  paperDrv.o [1]
+  .rodata            const    0x0000410c    0x2c  paperDrv.o [1]
+  .rodata            const    0x00004138    0x2c  paperDrv.o [1]
+  .rodata            const    0x00004164    0x2c  paperDrv.o [1]
+  .rodata            const    0x00004190    0x2c  paperDrv.o [1]
+  .text              ro code  0x000041bc    0x28  startup_hc32l15.o [1]
+  .text              ro code  0x000041e4    0x28  data_init.o [4]
+  .iar.init_table    const    0x0000420c    0x20  - Linker created -
+  .rodata            const    0x0000422c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000424c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000426c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000428c    0x20  paperDrv.o [1]
+  .rodata            const    0x000042ac    0x20  paperDrv.o [1]
+  .rodata            const    0x000042cc    0x20  paperDrv.o [1]
+  .rodata            const    0x000042ec    0x20  paperDrv.o [1]
+  .rodata            const    0x0000430c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000432c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000434c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000436c    0x20  paperDrv.o [1]
+  .rodata            const    0x0000438c    0x20  paperDrv.o [1]
+  .rodata            const    0x000043ac    0x20  paperDrv.o [1]
+  .rodata            const    0x000043cc    0x20  paperDrv.o [1]
+  .text              ro code  0x000043ec    0x1e  cmain.o [4]
+  .text              ro code  0x0000440a     0x4  low_level_init.o [3]
+  .text              ro code  0x0000440e     0x8  exit.o [3]
+  .text              ro code  0x00004416     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004418     0xa  cexit.o [4]
+  .text              ro code  0x00004422     0x2  startup_hc32l15.o [1]
+  .rodata            const    0x00004424    0x10  paperDrv.o [1]
+  .rodata            const    0x00004434    0x10  paperDrv.o [1]
+  .text              ro code  0x00004444     0xc  cstartup_M.o [4]
+  .rodata            const    0x00004450     0x8  clk.o [1]
+  .rodata            const    0x00004458     0x8  ct.o [1]
+  .rodata            const    0x00004460     0x8  exint.o [1]
+  .rodata            const    0x00004468     0x8  lpm.o [1]
+  .rodata            const    0x00004470     0x8  sci.o [1]
+  .rodata            const    0x00004478     0x4  clk.o [1]
+  .text              ro code  0x0000447c     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x0000447e     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004480     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004482     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004484     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004486     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x00004488     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x0000448a     0x2  startup_hc32l15.o [1]
+  .text              ro code  0x0000448c     0x2  startup_hc32l15.o [1]
+  .rodata            const    0x0000448e     0x1  sci.o [1]
+  .rodata            const    0x0000448f     0x1  sci.o [1]
+  .rodata            const    0x00004490     0x0  zero_init3.o [4]
+  .rodata            const    0x00004490     0x0  packbits_init_single.o [4]
+  Initializer bytes  const    0x00004490    0xbe  <for P2-1>
+                            - 0x0000454e  0x448e
+
+"P2", part 1 of 3:                         0xc29
+  P2-1                        0x20000000   0xc29  <Init block>
+    .data            inited   0x20000000    0xa0  ct.o [1]
+    .data            inited   0x200000a0   0xb48  paperDrv.o [1]
+    .data            inited   0x20000be8     0x4  system_hc32l15.o [1]
+    .data            inited   0x20000bec     0x8  tokenCon.o [1]
+    .data            inited   0x20000bf4     0x8  tokenCon.o [1]
+    .data            inited   0x20000bfc    0x10  tokenCon.o [1]
+    .data            inited   0x20000c0c     0x8  tokenCon.o [1]
+    .data            inited   0x20000c14     0x8  tokenCon.o [1]
+    .data            inited   0x20000c1c     0x8  tokenCon.o [1]
+    .data            inited   0x20000c24     0x2  tokenCon.o [1]
+    .data            inited   0x20000c26     0x2  tokenCon.o [1]
+    .data            inited   0x20000c28     0x1  main.o [1]
+                            - 0x20000c29   0xc29
+
+"P2", part 2 of 3:                          0xd4
+  .bss               zero     0x20000c2c    0x40  exint.o [1]
+  .bss               zero     0x20000c6c    0x40  tokenCon.o [1]
+  .bss               zero     0x20000cac    0x10  sci.o [1]
+  .bss               zero     0x20000cbc     0x8  main.o [1]
+  .bss               zero     0x20000cc4     0x8  main.o [1]
+  .bss               zero     0x20000ccc     0x8  main.o [1]
+  .bss               zero     0x20000cd4     0x8  main.o [1]
+  .bss               zero     0x20000cdc     0x4  clk.o [1]
+  .bss               zero     0x20000ce0     0x4  clk.o [1]
+  .bss               zero     0x20000ce4     0x4  clk.o [1]
+  .bss               zero     0x20000ce8     0x4  clk.o [1]
+  .bss               zero     0x20000cec     0x4  exint.o [1]
+  .bss               zero     0x20000cf0     0x4  main.o [1]
+  .bss               zero     0x20000cf4     0x1  paperDrv.o [1]
+  .bss               zero     0x20000cf5     0x1  paperDrv.o [1]
+  .bss               zero     0x20000cf6     0x1  paperDrv.o [1]
+  .bss               zero     0x20000cf7     0x1  timeOut.o [1]
+  .bss               zero     0x20000cf8     0x1  tokenBsp.o [1]
+  .bss               zero     0x20000cf9     0x1  tokenBsp.o [1]
+  .bss               zero     0x20000cfa     0x1  tokenCon.o [1]
+  .bss               zero     0x20000cfb     0x1  tokenCon.o [1]
+  .bss               zero     0x20000cfc     0x1  tokenCon.o [1]
+  .bss               zero     0x20000cfd     0x1  tokenCon.o [1]
+                            - 0x20000cfe    0xd2
+
+"P2", part 3 of 3:                         0x400
+  CSTACK                      0x20000d00   0x400  <Block>
+    CSTACK           uninit   0x20000d00   0x400  <Block tail>
+                            - 0x20001100   0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xd2:
+          0x20000c2c   0xd2
+
+Copy/packbits (__iar_packbits_init_single3)
+    1 source range, total size 0xbe (6% of destination):
+          0x00004490   0xbe
+    1 destination range, total size 0xc29:
+          0x20000000  0xc29
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                  ro code  ro data  rw data
+    ------                  -------  -------  -------
+D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj: [1]
+    clk.o                     1 948       60       16
+    ct.o                      1 932       61      160
+    ddl.o                        72
+    exint.o                     700       56       68
+    gpio.o                      564
+    interrupts_hc32l15.o      1 092
+    lpm.o                       384       56
+    main.o                      568        1       37
+    paperDrv.o                4 272    1 085    2 891
+    sci.o                     2 320       58       16
+    startup_hc32l15.o           258
+    system_hc32l15.o             60                 4
+    timeOut.o                   198                 1
+    tokenBsp.o                  172                 2
+    tokenCon.o                1 324        3      128
+    -------------------------------------------------
+    Total:                   15 864    1 380    3 323
+
+command line: [2]
+    -------------------------------------------------
+    Total:
+
+dl6M_tlf.a: [3]
+    abort.o                      10
+    exit.o                        8
+    low_level_init.o              4
+    -------------------------------------------------
+    Total:                       22
+
+rt6M_tl.a: [4]
+    I32DivModFast.o             174
+    IntDivZer.o                   2
+    cexit.o                      10
+    cmain.o                      30
+    cstartup_M.o                 12
+    data_init.o                  40
+    packbits_init_single.o       60
+    zero_init3.o                 60
+    -------------------------------------------------
+    Total:                      388
+
+shb_l.a: [5]
+    ABIassert.o                  36
+    exit.o                       20
+    -------------------------------------------------
+    Total:                       56
+
+    Linker created                        32    1 024
+-----------------------------------------------------
+    Grand Total:             16 330    1 412    4 347
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x0000420c          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x0000422c          --   Gb  - Linker created -
+?main                   0x000043ed         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000d00          --   Gb  - Linker created -
+CSTACK$$Limit           0x20001100          --   Gb  - Linker created -
+ClkEnableIrq            0x000015b1   0xe0  Code  Lc  clk.o [1]
+ClkEnableNvic           0x000014ab   0x18  Code  Lc  clk.o [1]
+ClkSetHICR              0x000014c3   0x20  Code  Lc  clk.o [1]
+ClkSetHSXT              0x000014e3   0x6e  Code  Lc  clk.o [1]
+ClkSetLICR              0x00001551   0x14  Code  Lc  clk.o [1]
+ClkSetLSXT              0x00001565   0x34  Code  Lc  clk.o [1]
+Clk_CsvIrqHandler       0x000016b9   0x8a  Code  Gb  clk.o [1]
+Clk_Enable              0x00001a41   0xdc  Code  Gb  clk.o [1]
+Clk_GetSourceFreq       0x000017c9   0x8c  Code  Gb  clk.o [1]
+Clk_GetSystemClk        0x00001855   0x64  Code  Gb  clk.o [1]
+Clk_HSXTRdy_IrqHandler  0x00001691   0x20  Code  Gb  clk.o [1]
+Clk_Init                0x000018f1  0x142  Code  Gb  clk.o [1]
+Clk_SetHICRFreq         0x00001b45   0x2c  Code  Gb  clk.o [1]
+Clk_SwitchTo            0x00001745   0x84  Code  Gb  clk.o [1]
+CtEnableNvic            0x000026e9   0x18  Code  Lc  ct.o [1]
+CtGetInstanceDataPtr    0x00002687   0x62  Code  Lc  ct.o [1]
+Ct_ConfigIOMode         0x00002831  0x106  Code  Gb  ct.o [1]
+Ct_Irq0Handler          0x00002701   0xa2  Code  Gb  ct.o [1]
+Ct_Irq1Handler          0x000027a3   0x80  Code  Gb  ct.o [1]
+Ct_Rt_DisableCount      0x00002c41   0x4a  Code  Gb  ct.o [1]
+Ct_Rt_EnableCount       0x00002be9   0x4a  Code  Gb  ct.o [1]
+Ct_Rt_EnableSwTrig      0x00002c95   0x4a  Code  Gb  ct.o [1]
+Ct_Rt_Init              0x00002959  0x27c  Code  Gb  ct.o [1]
+Ct_Rt_WriteCycleVal     0x00002ce5   0x46  Code  Gb  ct.o [1]
+EPD_W21_Init            0x0000020b   0x28  Code  Gb  paperDrv.o [1]
+EPD_W21_WriteCMD        0x00000143   0x32  Code  Lc  paperDrv.o [1]
+EPD_W21_WriteDATA       0x00000175   0x32  Code  Lc  paperDrv.o [1]
+EPD_display_init        0x00000233   0xb4  Code  Gb  paperDrv.o [1]
+Exint_Init              0x00003909  0x114  Code  Gb  exint.o [1]
+Exti_07IrqHandler       0x0000384b   0x5a  Code  Gb  exint.o [1]
+Exti_815IrqHandler      0x000038a5   0x5a  Code  Gb  exint.o [1]
+GPIO_Configuration      0x00003b85    0xc  Code  Lc  main.o [1]
+Gpio_GetIO              0x00001335   0x22  Code  Gb  gpio.o [1]
+Gpio_InitIO             0x000012b7   0x5c  Code  Gb  gpio.o [1]
+Gpio_SetAnalog          0x00001171  0x146  Code  Gb  gpio.o [1]
+Gpio_SetIO              0x00001313   0x22  Code  Gb  gpio.o [1]
+HRES                    0x20000cf4    0x1  Data  Gb  paperDrv.o [1]
+IRQ000_Handler          0x00003433    0xa  Code  Gb  interrupts_hc32l15.o [1]
+IRQ001_Handler          0x0000343d    0xa  Code  Gb  interrupts_hc32l15.o [1]
+IRQ002_Handler          0x00003447    0xa  Code  Gb  interrupts_hc32l15.o [1]
+IRQ004_Handler          0x00003451   0x2e  Code  Gb  interrupts_hc32l15.o [1]
+IRQ005_Handler          0x0000347f   0x30  Code  Gb  interrupts_hc32l15.o [1]
+IRQ006_Handler          0x000034af   0x1c  Code  Gb  interrupts_hc32l15.o [1]
+IRQ007_Handler          0x000034cb   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ008_Handler          0x000034e5   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ009_Handler          0x00003517   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ010_Handler          0x00003531   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ011_Handler          0x00003563   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ012_Handler          0x0000357d   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ015_Handler          0x000035af   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ016_Handler          0x000035c9   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ017_Handler          0x000035fb   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ018_Handler          0x00003615   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ019_Handler          0x00003647   0x1a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ020_Handler          0x00003661   0x32  Code  Gb  interrupts_hc32l15.o [1]
+IRQ024_Handler          0x00003693   0x3a  Code  Gb  interrupts_hc32l15.o [1]
+IRQ025_Handler          0x000036cd   0x1c  Code  Gb  interrupts_hc32l15.o [1]
+IRQ026_Handler          0x000036f1    0xa  Code  Gb  interrupts_hc32l15.o [1]
+IRQ027_Handler          0x000036fb    0xa  Code  Gb  interrupts_hc32l15.o [1]
+IRQ031_Handler          0x00003705   0x42  Code  Gb  interrupts_hc32l15.o [1]
+LPM_Configuration       0x00003b91    0xc  Code  Lc  main.o [1]
+Lpm_GoToStandByMode     0x00003d41  0x140  Code  Gb  lpm.o [1]
+MSCRX_IRQHander2        0x00003349   0x3e  Code  Gb  interrupts_hc32l15.o [1]
+MSCSTAT_IRQHander2      0x000033c5   0x3e  Code  Gb  interrupts_hc32l15.o [1]
+MSCTX_IRQHander2        0x00003387   0x3e  Code  Gb  interrupts_hc32l15.o [1]
+NMI_Handler             0x00003403   0x30  Code  Gb  interrupts_hc32l15.o [1]
+NVIC_ClearPendingIRQ    0x00001405   0x18  Code  Lc  clk.o [1]
+NVIC_ClearPendingIRQ    0x000025e1   0x18  Code  Lc  ct.o [1]
+NVIC_ClearPendingIRQ    0x000037a5   0x18  Code  Lc  exint.o [1]
+NVIC_ClearPendingIRQ    0x00001cd1   0x18  Code  Lc  sci.o [1]
+NVIC_EnableIRQ          0x000013ed   0x18  Code  Lc  clk.o [1]
+NVIC_EnableIRQ          0x000025c9   0x18  Code  Lc  ct.o [1]
+NVIC_EnableIRQ          0x0000378d   0x18  Code  Lc  exint.o [1]
+NVIC_EnableIRQ          0x00001cb9   0x18  Code  Lc  sci.o [1]
+NVIC_SetPriority        0x0000141d   0x8e  Code  Lc  clk.o [1]
+NVIC_SetPriority        0x000025f9   0x8e  Code  Lc  ct.o [1]
+NVIC_SetPriority        0x000037bd   0x8e  Code  Lc  exint.o [1]
+NVIC_SetPriority        0x00001ce9   0x8e  Code  Lc  sci.o [1]
+Nmi_IrqHandler          0x000038ff    0xa  Code  Gb  exint.o [1]
+RCC_Configuration       0x00003b4d   0x38  Code  Lc  main.o [1]
+Region$$Table$$Base     0x0000420c          --   Gb  - Linker created -
+Region$$Table$$Limit    0x0000422c          --   Gb  - Linker created -
+RtUnderflowIrqHandler   0x00003281    0x8  Code  Lc  timeOut.o [1]
+RxIntCb                 0x00002d55   0x3e  Code  Gb  tokenCon.o [1]
+SPI_Delay               0x000000c1   0x20  Code  Lc  paperDrv.o [1]
+SPI_Write               0x000000e1   0x62  Code  Lc  paperDrv.o [1]
+SciInitNvic             0x00001d77   0x18  Code  Lc  sci.o [1]
+Sci_ClearFifoStatus     0x000023c1   0x5c  Code  Gb  sci.o [1]
+Sci_ClearIrqStatus      0x000024b1   0x7a  Code  Gb  sci.o [1]
+Sci_ClearReadFifo       0x0000254d   0x10  Code  Gb  sci.o [1]
+Sci_ClearStatus         0x00002281   0x60  Code  Gb  sci.o [1]
+Sci_ClearWriteFifo      0x0000253d   0x10  Code  Gb  sci.o [1]
+Sci_DisableIrq          0x00001ec1   0x7a  Code  Gb  sci.o [1]
+Sci_Enable              0x00002149   0x10  Code  Gb  sci.o [1]
+Sci_EnableClock         0x000021a1   0x10  Code  Gb  sci.o [1]
+Sci_EnableIrq           0x00001e47   0x7a  Code  Gb  sci.o [1]
+Sci_EnableReset         0x0000258d   0x10  Code  Gb  sci.o [1]
+Sci_GetFifoStatus       0x000022ed   0xd4  Code  Gb  sci.o [1]
+Sci_GetIrqStatus        0x00002425   0x84  Code  Gb  sci.o [1]
+Sci_GetStatus           0x000021dd   0x9a  Code  Gb  sci.o [1]
+Sci_GetWriteFifoCurCnt  0x0000255d    0xa  Code  Gb  sci.o [1]
+Sci_Init                0x00001f61  0x1e2  Code  Gb  sci.o [1]
+Sci_InitStatus          0x000021d3    0xa  Code  Gb  sci.o [1]
+Sci_IrqHandler          0x00001d8f   0xb8  Code  Gb  sci.o [1]
+Sci_ReceiveData         0x00002535    0x8  Code  Gb  sci.o [1]
+Sci_ResetHigh           0x0000256d   0x10  Code  Gb  sci.o [1]
+Sci_ResetLow            0x0000257d   0x10  Code  Gb  sci.o [1]
+Sci_SendData            0x0000252b    0xa  Code  Gb  sci.o [1]
+Sci_SetBaudRate         0x000021b9   0x1a  Code  Gb  sci.o [1]
+Sci_SetClock            0x00002159   0x40  Code  Gb  sci.o [1]
+SystemCoreClock         0x20000be8    0x4  Data  Gb  system_hc32l15.o [1]
+SystemCoreClockUpdate   0x00001c77    0xc  Code  Gb  system_hc32l15.o [1]
+SystemInit              0x00001c5d   0x1a  Code  Gb  system_hc32l15.o [1]
+TxIntCb                 0x00002d93   0x3c  Code  Gb  tokenCon.o [1]
+VRES_byte1              0x20000cf5    0x1  Data  Gb  paperDrv.o [1]
+VRES_byte2              0x20000cf6    0x1  Data  Gb  paperDrv.o [1]
+WIFSRDummyRead          0x00003d37    0xa  Code  Lc  lpm.o [1]
+WRFSRDummyRead          0x00003d2d    0xa  Code  Lc  lpm.o [1]
+__aeabi_assert          0x00001c39   0x24  Code  Gb  ABIassert.o [5]
+__aeabi_idiv0           0x00001c99         Code  Gb  IntDivZer.o [4]
+__aeabi_uidiv           0x00001b89         Code  Gb  I32DivModFast.o [4]
+__aeabi_uidivmod        0x00001b89         Code  Gb  I32DivModFast.o [4]
+__cmain                 0x000043ed         Code  Gb  cmain.o [4]
+__exit                  0x00001ca5   0x14  Code  Gb  exit.o [5]
+__iar_data_init3        0x000041e5   0x28  Code  Gb  data_init.o [4]
+__iar_packbits_init_single3
+                        0x00003fb9   0x3c  Code  Gb  packbits_init_single.o [4]
+__iar_program_start     0x00004445         Code  Gb  cstartup_M.o [4]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_zero_init3        0x00003f7d   0x3c  Code  Gb  zero_init3.o [4]
+__low_level_init        0x0000440b    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  startup_hc32l15.o [1]
+_call_main              0x000043f9         Code  Gb  cmain.o [4]
+_exit                   0x00004419         Code  Gb  cexit.o [4]
+_main                   0x00004407         Code  Gb  cmain.o [4]
+abort                   0x00001c9b    0xa  Code  Gb  abort.o [3]
+balance                 0x20000cd4    0x8  Data  Gb  main.o [1]
+bspConfig               0x00003c91   0x84  Code  Gb  tokenBsp.o [1]
+closeLockTime           0x20000cc4    0x8  Data  Gb  main.o [1]
+ddl_memclr              0x000013a5   0x18  Code  Gb  ddl.o [1]
+deep_sleep              0x00000303   0x22  Code  Gb  paperDrv.o [1]
+delay1ms                0x000013bd   0x2c  Code  Gb  ddl.o [1]
+exit                    0x0000440f    0x8  Code  Gb  exit.o [3]
+full_display            0x000002e7   0x1c  Code  Gb  paperDrv.o [1]
+gText_immigaFull        0x200000a0  0xb48  Data  Gb  paperDrv.o [1]
+gText_immiga_balance1   0x0000434c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_balance2   0x0000436c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_close      0x0000424c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_colon      0x00004424   0x10  Data  Gb  paperDrv.o [1]
+gText_immiga_dot        0x00004434   0x10  Data  Gb  paperDrv.o [1]
+gText_immiga_lock       0x0000426c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_minute1    0x0000438c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_minute2    0x000043ac   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_num        0x00003eac   0xd0  Data  Gb  paperDrv.o [1]
+gText_immiga_open       0x0000422c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_pay1       0x0000430c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_pay2       0x0000432c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_ride1      0x0000428c   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_ride2      0x000042ac   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_time1      0x000042cc   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_time2      0x000042ec   0x20  Data  Gb  paperDrv.o [1]
+gText_immiga_yuan       0x000043cc   0x20  Data  Gb  paperDrv.o [1]
+getDDFCardCmdContent    0x20000c26    0x2  Data  Gb  tokenCon.o [1]
+getDDFCardCmdHeader     0x20000c14    0x8  Data  Gb  tokenCon.o [1]
+getEFCardCmdContent     0x20000c24    0x2  Data  Gb  tokenCon.o [1]
+getEFCardCmdHeader      0x20000c0c    0x8  Data  Gb  tokenCon.o [1]
+getResponseCmd          0x20000bec    0x8  Data  Gb  tokenCon.o [1]
+getSZTCmdContent        0x20000bfc   0x10  Data  Gb  tokenCon.o [1]
+getSZTCmdHeader         0x20000bf4    0x8  Data  Gb  tokenCon.o [1]
+getSZTRecord1Cmd        0x20000c1c    0x8  Data  Gb  tokenCon.o [1]
+keyDownCallback         0x00003c89    0x8  Code  Lc  tokenBsp.o [1]
+keyDownPress            0x20000cf9    0x1  Data  Gb  tokenBsp.o [1]
+keyUpCallback           0x00003c81    0x8  Code  Lc  tokenBsp.o [1]
+keyUpPress              0x20000cf8    0x1  Data  Gb  tokenBsp.o [1]
+lcdDisInfo              0x000003f1  0xd5c  Code  Gb  paperDrv.o [1]
+lcd_chkstatus           0x000003b1   0x2c  Code  Gb  paperDrv.o [1]
+lut                     0x00000325   0x7c  Code  Gb  paperDrv.o [1]
+lut_bb                  0x00004190   0x2c  Data  Gb  paperDrv.o [1]
+lut_bw                  0x00004138   0x2c  Data  Gb  paperDrv.o [1]
+lut_vcomDC              0x000040e0   0x2c  Data  Gb  paperDrv.o [1]
+lut_wb                  0x00004164   0x2c  Data  Gb  paperDrv.o [1]
+lut_ww                  0x0000410c   0x2c  Data  Gb  paperDrv.o [1]
+m_astcCtInstanceDataLut
+                        0x20000000   0xa0  Data  Lc  ct.o [1]
+main                    0x00003a49  0x104  Code  Gb  main.o [1]
+openLockTime            0x20000cbc    0x8  Data  Gb  main.o [1]
+paperIOInit             0x000001a7   0x64  Code  Gb  paperDrv.o [1]
+pay                     0x20000ccc    0x8  Data  Gb  main.o [1]
+pfnFcsCallback          0x20000cdc    0x4  Data  Lc  clk.o [1]
+pfnHSXTCallback         0x20000ce0    0x4  Data  Lc  clk.o [1]
+pfnHSXTFailCallback     0x20000ce4    0x4  Data  Lc  clk.o [1]
+pfnLSXTFailCallback     0x20000ce8    0x4  Data  Lc  clk.o [1]
+recordProcess           0x00003b9d   0xb6  Code  Lc  main.o [1]
+rideTime                0x20000cf0    0x4  Data  Gb  main.o [1]
+sciRxBuf                0x20000c6c   0x40  Data  Gb  tokenCon.o [1]
+sciRxOffset             0x20000cfa    0x1  Data  Gb  tokenCon.o [1]
+sciTxErrFlag            0x20000cfb    0x1  Data  Lc  tokenCon.o [1]
+sciTxFinState           0x20000cfc    0x1  Data  Lc  tokenCon.o [1]
+sciTxPendCnt            0x20000cfd    0x1  Data  Lc  tokenCon.o [1]
+stcExintInternData      0x20000c2c   0x40  Data  Gb  exint.o [1]
+stcExintNMIInternData   0x20000cec    0x4  Data  Gb  exint.o [1]
+stcSciIrqCb             0x20000cac   0x10  Data  Lc  sci.o [1]
+sztRecordNum            0x20000c28    0x1  Data  Gb  main.o [1]
+timeOutFlag             0x20000cf7    0x1  Data  Gb  timeOut.o [1]
+timeOutStart            0x00003289   0xa2  Code  Gb  timeOut.o [1]
+timeOutStop             0x0000333d    0xa  Code  Gb  timeOut.o [1]
+tokenConfig             0x00002e7d   0xbc  Code  Gb  tokenCon.o [1]
+tokenControl            0x00002f39   0x9a  Code  Gb  tokenCon.o [1]
+tokenDisableTrx         0x00002e73    0xa  Code  Gb  tokenCon.o [1]
+tokenEnableTrx          0x00002e69    0xa  Code  Gb  tokenCon.o [1]
+tokenIOInit             0x00002dcf   0x7e  Code  Gb  tokenCon.o [1]
+tokenPowerOff           0x00002e5b    0xe  Code  Gb  tokenCon.o [1]
+tokenPowerOn            0x00002e4d    0xe  Code  Gb  tokenCon.o [1]
+tokenRead               0x00003009  0x242  Code  Gb  tokenCon.o [1]
+
+
+[1] = D:\flyWork\token4SZT\inmiga\user\EWARM\Debug\Obj
+[2] = command line
+[3] = dl6M_tlf.a
+[4] = rt6M_tl.a
+[5] = shb_l.a
+
+  16 330 bytes of readonly  code memory
+   1 412 bytes of readonly  data memory
+   4 347 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
