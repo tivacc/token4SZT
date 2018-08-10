@@ -15,7 +15,7 @@
 #define PAPER_CLK_PIN	2
 
 #define PAPER_CS_PORT	0
-#define PAPER_CS_PIN	3
+#define PAPER_CS_PIN	0
 
 #define PAPER_DC_PORT	0
 #define PAPER_DC_PIN	6

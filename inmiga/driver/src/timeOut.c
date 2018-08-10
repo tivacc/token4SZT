@@ -22,6 +22,7 @@ static void RtUnderflowIrqHandler(void)
 
 void timeOutStart(uint16_t value)
 {
+	uint16_t timeCnt = 0;
   stc_rt_irq_en_t    stcIrqEn;
   stc_rt_irq_cb_t    stcIrqCb;
   stc_ct_rt_config_t stcRtConfig;
@@ -31,15 +32,16 @@ void timeOutStart(uint16_t value)
   ddl_memclr((uint8_t*)&stcIrqCb, (uint32_t)(sizeof(stcIrqCb)));
   ddl_memclr((uint8_t*)&stcRtConfig, (uint32_t)(sizeof(stcRtConfig)));
 
-  Ct_ConfigIOMode(CT_CH, CtIoMode0);
-  
-  Gpio_SetFunc_TIOA0_1(0u);
+  timeOutFlag = 0;
+
+  //Ct_ConfigIOMode(CT_CH, CtIoMode0);
+  //Gpio_SetFunc_TIOA0_1(0u);
   
   /* Initialize Pointer to interrupt request structure  */
   stcRtConfig.pstcRtIrqEn = &stcIrqEn;
   stcRtConfig.pstcRtIrqCb = &stcIrqCb;
   /* Initialize Composite Timer  */
-  stcRtConfig.enPres = RtPresNone; 
+  stcRtConfig.enPres = RtPres1Div256; 
   stcRtConfig.enSize = CT_TIMER_SIZE;
   stcRtConfig.enMode = CT_RT_MODE;
   stcRtConfig.enExtTrig = RtExtTiggerDisable;
@@ -50,8 +52,9 @@ void timeOutStart(uint16_t value)
   stcRtConfig.pstcRtIrqCb->pfnRtUnderflowIrqCb = RtUnderflowIrqHandler;
   stcRtConfig.bTouchNvic = TRUE;
   Ct_Rt_Init(CT_CH, &stcRtConfig);
-  
-  Ct_Rt_WriteCycleVal(CT_CH, value); 
+
+  timeCnt = (1000/16)*value;
+  Ct_Rt_WriteCycleVal(CT_CH, timeCnt); 
   Ct_Rt_EnableCount(CT_CH);
   Ct_Rt_EnableSwTrig(CT_CH);
 }

@@ -2072,6 +2072,9 @@
             <name>$PROJ_DIR$\..\..\driver\src\lpm.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\driver\src\lvd.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\driver\src\sci.c</name>
         </file>
     </group>
@@ -2079,6 +2082,9 @@
         <name>source</name>
         <file>
             <name>$PROJ_DIR$\..\source\ddl_device.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\source\des.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\source\main.c</name>

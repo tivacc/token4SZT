@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include "clk.h"
 #include "lpm.h"
+#include "lvd.h"
 #include "typedef.h"
 #include "tokenCon.h"
 #include "tokenBsp.h"
@@ -32,34 +33,38 @@ void	main(void)
 	tokenConfig();
 	bspConfig();
   EPD_display_init();
-
+  
+  /*
   tokenPowerOn();
   tokenEnableTrx();  
   tokenRead(1);
   tokenDisableTrx();
   tokenPowerOff();
-  
+
   recordProcess();
-	full_display(lcdDisInfo);
+  full_display(lcdDisInfo);
   deep_sleep();
+  */
+
+  delay1ms(10000);  //avoid low power mode an once  
   
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  delay1ms(10000);
-  
-	while(1)
-  {
+  tokenPowerOn();
+  tokenEnableTrx();
+  delay1ms(10);
+  adfCreate();
+  delay1ms(100);
+  tokenDisableTrx();
+  tokenPowerOff();
+
+	while(1) ;
+  { 
     if(keyUpPress)
     {
       keyUpPress = 0;
       if(sztRecordNum<10)
       {
         sztRecordNum += 1;
+        
         tokenPowerOn();
         tokenEnableTrx();  
         tokenRead(sztRecordNum);
@@ -68,13 +73,12 @@ void	main(void)
         
         recordProcess();
         
-        EPD_display_init();          
+        EPD_display_init();        
         full_display(lcdDisInfo);
         deep_sleep();
       }
     }
-    
-    if(keyDownPress)
+    else if(keyDownPress)
     {
       keyDownPress = 0;      
       if(sztRecordNum>1)
@@ -93,6 +97,12 @@ void	main(void)
         deep_sleep();
       }
     }
+    else
+    {
+      ;
+    }
+    
+    
     LPM_Configuration();
   }
 }
@@ -130,49 +140,14 @@ static void NVIC_Configuration(void)
 
 static void LPM_Configuration(void)
 { 
-  /*
-  Gpio_InitIO(0,0,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(0,2,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(0, 2, 1);
-
-  Gpio_InitIO(2,5,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(2,6,GpioDirIn,FALSE,FALSE);
-  
-  Gpio_InitIO(5,0,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(5, 0, 0);
-  Gpio_InitIO(5,1,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(5, 1, 0);
-  Gpio_InitIO(5,2,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(5, 2, 0);
-  Gpio_InitIO(6,1,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(6, 1, 0);
-  Gpio_InitIO(6,0,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(6,2,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(6,3,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(6, 3, 0);
-  Gpio_InitIO(6,4,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(6, 4, 0);
-  Gpio_InitIO(6,5,GpioDirOut,FALSE,FALSE);
-  Gpio_SetIO(6, 5, 0);
-
-  Gpio_InitIO(1,0,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(1,1,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(1,2,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(1,3,GpioDirIn,FALSE,FALSE);
-  
-  Gpio_InitIO(2,0,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(2,1,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(2,2,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(2,7,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(3,7,GpioDirIn,FALSE,FALSE);
-  
-  Gpio_InitIO(7,0,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(7,1,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(7,2,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(7,3,GpioDirIn,FALSE,FALSE);
-  Gpio_InitIO(7,4,GpioDirIn,FALSE,FALSE);
-  */
-    
+  stc_dstb_ret_cause_t stcCauseCfg;
+  ddl_memclr(&stcCauseCfg,sizeof(stcCauseCfg));
+  stcCauseCfg.bWakeup0En = TRUE;
+  stcCauseCfg.bWakeup3En = TRUE;
+  Lpm_ConfigDeepStbRetCause(&stcCauseCfg);
+  Lpm_SetWkupPinLevel(WkupPin0,WkupLowLevelValid);
+  Lpm_SetWkupPinLevel(WkupPin3,WkupLowLevelValid);
+  Lpm_ConfigDeepStbRAMRetention(TRUE);
   Lpm_GoToStandByMode(DeepStbStopMode, TRUE);
 }
 
